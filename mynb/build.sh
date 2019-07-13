@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 SRV="srv.apnet.local:5000"
 NAME="mynb"

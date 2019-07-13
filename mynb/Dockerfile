@@ -8,13 +8,19 @@ LABEL maintainer="Anand Bisen <asbisen@icloud.com>"
 USER root
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends zlib1g-dev libsz2 libstdc++6 libquadmath0 libaec0 && \
+    apt-get install -y --no-install-recommends \
+                       zlib1g-dev              \
+                       vim-tiny                \
+                       libsz2 libstdc++6       \ 
+                       libquadmath0            \
+                       libaec0              && \
     rm -rf /var/lib/apt/lists/*
 
-# Install Tensorflow
-RUN conda install --quiet --yes \
-    'tensorflow=1.13*' \
-    'keras=2.2*' && \
+# Install Tensorflow / PyTorch / XGBoost / Vaex
+RUN conda install --quiet --yes 'tensorflow=1.13*' 'keras=2.2*' && \
+    conda install --quiet --yes pytorch-cpu torchvision-cpu -c pytorch && \
+    conda install --quiet --yes matplotlib xgboost && \
+    conda install --quiet --yes vaex -c conda-forge && \
     conda clean --all -f -y && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
@@ -32,9 +38,9 @@ RUN julia -e 'import Pkg; Pkg.update()' && \
     julia -e 'import Pkg; Pkg.add.(["MLDataUtils", "MLJ"])' && \
     julia -e 'import Pkg; Pkg.add.(["NodeJS"])' && \
     julia -e 'import Pkg; Pkg.add.(["OSQP", "OnlineStats"])' && \
-    julia -e 'import Pkg; Pkg.add.(["Plots", "PrettyTables", "ProgressMeter", "PlotlyJS"])' && \
+    julia -e 'import Pkg; Pkg.add.(["Parquet", "ParquetFiles", "Plots", "PrettyTables", "ProgressMeter", "PlotlyJS"])' && \
     julia -e 'import Pkg; Pkg.add.(["Query"])' && \
-    julia -e 'import Pkg; Pkg.add.(["TableReader", "TimeSeries"])' && \
+    julia -e 'import Pkg; Pkg.add.(["TableReader", "TimeSeries", "TimeseriesPrediction"])' && \
     julia -e 'import Pkg; Pkg.add.(["UnicodePlots"])' && \
     julia -e 'import Pkg; Pkg.add.(["VegaDatasets"])' && \
     julia -e 'import Pkg; Pkg.add.(["WebIO"])' && \

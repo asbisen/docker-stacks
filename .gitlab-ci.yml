@@ -1,0 +1,10 @@
+stages:
+  - one
+
+build-base:
+  stage: one
+  image:
+    name: docker:stable
+  script: "cd mynb && ./build.sh"
+  tags:
+    - docker

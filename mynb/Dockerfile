@@ -13,6 +13,7 @@ RUN apt-get update && \
                        vim-tiny                \
                        libsz2 libstdc++6       \ 
                        libquadmath0            \
+                       libxtst6                \
                        libaec0              && \
     rm -rf /var/lib/apt/lists/*
 
@@ -37,7 +38,7 @@ RUN julia -e 'import Pkg; Pkg.update()' && \
     julia -e 'import Pkg; Pkg.add.(["JuMP", "JuliaDB", "JSON"])' && \
     julia -e 'import Pkg; Pkg.add.(["MLDataUtils", "MLJ", "Mustache"])' && \
     julia -e 'import Pkg; Pkg.add.(["NodeJS"])' && \
-    julia -e 'import Pkg; Pkg.add.(["OSQP", "OnlineStats"])' && \
+    julia -e 'import Pkg; Pkg.add.(["ORCA", "OSQP", "OnlineStats"])' && \
     julia -e 'import Pkg; Pkg.add.(["Parquet", "ParquetFiles", "Plots", "PrettyTables", "ProgressMeter", "PlotlyJS"])' && \
     julia -e 'import Pkg; Pkg.add.(["Query", "QuantEcon"])' && \
     julia -e 'import Pkg; Pkg.add.(["StatsBase"])' && \

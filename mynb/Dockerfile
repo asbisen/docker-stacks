@@ -27,23 +27,24 @@ RUN conda install --quiet --yes 'tensorflow=1.13*' 'keras=2.2*' && \
 
 
 RUN julia -e 'import Pkg; Pkg.update()' && \
-    julia -e 'import Pkg; Pkg.add.(["ArgParse", "CSV", "Blink", "BSON"])' && \
-    julia -e 'import Pkg; Pkg.add.(["CSVFiles", "CodecZlib", "ColorBrewer", "ColorSchemes", "Colors", "Combinatorics"])' && \
+    julia -e 'import Pkg; Pkg.add.(["ArgParse", "Arrow", "ApproxFun", "Blink", "BSON", "CSV", "CSVFiles"])' && \
+    julia -e 'import Pkg; Pkg.add.(["CodecZlib", "ColorBrewer", "ColorSchemes", "Colors", "Combinatorics"])' && \
     julia -e 'import Pkg; Pkg.add.(["DataFrames", "DataStructures", "Distributions", "Documenter"])' && \
-    julia -e 'import Pkg; Pkg.add.(["FileIO", "Flux", "FFTW"])' && \
-    julia -e 'import Pkg; Pkg.add.(["Genie", "GLPK", "GR", "GZip"])' && \
-    julia -e 'import Pkg; Pkg.add.(["HTTP"])' && \
+    julia -e 'import Pkg; Pkg.add.(["Feather", "FileIO", "Flux", "FFTW"])' && \
+    julia -e 'import Pkg; Pkg.add.(["Genie", "GLPK", "Glob", "GR", "GZip"])' && \
+    julia -e 'import Pkg; Pkg.add.(["HDF5", "HTTP"])' && \
     julia -e 'import Pkg; Pkg.add.(["Images", "IJulia", "Impute", "Ipopt", "IterTools"])' && \
     julia -e 'import Pkg; Pkg.add.(["JuMP", "JuliaDB", "JSON"])' && \
-    julia -e 'import Pkg; Pkg.add.(["MLDataUtils", "MLJ"])' && \
+    julia -e 'import Pkg; Pkg.add.(["MLDataUtils", "MLJ", "Mustache"])' && \
     julia -e 'import Pkg; Pkg.add.(["NodeJS"])' && \
     julia -e 'import Pkg; Pkg.add.(["OSQP", "OnlineStats"])' && \
     julia -e 'import Pkg; Pkg.add.(["Parquet", "ParquetFiles", "Plots", "PrettyTables", "ProgressMeter", "PlotlyJS"])' && \
-    julia -e 'import Pkg; Pkg.add.(["Query"])' && \
+    julia -e 'import Pkg; Pkg.add.(["Query", "QuantEcon"])' && \
+    julia -e 'import Pkg; Pkg.add.(["StatsBase"])' && \
     julia -e 'import Pkg; Pkg.add.(["TableReader", "TimeSeries", "TimeseriesPrediction"])' && \
     julia -e 'import Pkg; Pkg.add.(["UnicodePlots"])' && \
     julia -e 'import Pkg; Pkg.add.(["VegaDatasets"])' && \
-    julia -e 'import Pkg; Pkg.add.(["WebIO"])' && \
+    julia -e 'import Pkg; Pkg.add.(["Weave", "WebIO"])' && \
     julia -e 'import Pkg; Pkg.add.(["YAML"])' && \
     julia -e 'import Pkg; Pkg.add(Pkg.PackageSpec(name="Blink", rev="master"))' && \
     julia -e 'import Pkg; ENV["PYTHON"]="/opt/conda/bin/python"; Pkg.add.(["PyCall", "PyPlot", "Seaborn"]); import PyPlot' && \

@@ -13,6 +13,7 @@ RUN apt-get update && \
                        vim-tiny                \
                        libsz2 libstdc++6       \ 
                        libquadmath0            \
+                       libgconf-2-4            \
                        libxtst6                \
                        libaec0              && \
     rm -rf /var/lib/apt/lists/*
@@ -27,6 +28,7 @@ RUN conda install --quiet --yes 'tensorflow=1.13*' 'keras=2.2*' && \
     fix-permissions /home/$NB_USER
 
 
+ENV PYTHON="/opt/conda/bin/python"
 RUN julia -e 'import Pkg; Pkg.update()' && \
     julia -e 'import Pkg; Pkg.add.(["ArgParse", "Arrow", "ApproxFun", "Blink", "BSON", "CSV", "CSVFiles"])' && \
     julia -e 'import Pkg; Pkg.add.(["CodecZlib", "ColorBrewer", "ColorSchemes", "Colors", "Combinatorics"])' && \

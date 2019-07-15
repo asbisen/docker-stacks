@@ -19,7 +19,8 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install Tensorflow / PyTorch / XGBoost / Vaex
-RUN conda install --quiet --yes 'tensorflow=1.13*' 'keras=2.2*' && \
+RUN conda install --quiet --yes tqdm tk lzo urllib3 && \
+    conda install --quiet --yes 'tensorflow=1.13*' 'keras=2.2*' && \
     conda install --quiet --yes pytorch-cpu torchvision-cpu -c pytorch && \
     conda install --quiet --yes matplotlib xgboost && \
     conda install --quiet --yes vaex -c conda-forge && \

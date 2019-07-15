@@ -29,9 +29,11 @@ RUN conda install --quiet --yes 'tensorflow=1.13*' 'keras=2.2*' && \
 
 
 ENV PYTHON="/opt/conda/bin/python"
+ENV CONDA_JL_HOME="/opt/conda/"
+
 RUN julia -e 'import Pkg; Pkg.update()' && \
     julia -e 'import Pkg; Pkg.add.(["ArgParse", "Arrow", "ApproxFun", "Blink", "BSON", "CSV", "CSVFiles"])' && \
-    julia -e 'import Pkg; Pkg.add.(["CodecZlib", "ColorBrewer", "ColorSchemes", "Colors", "Combinatorics"])' && \
+    julia -e 'import Pkg; Pkg.add.(["Conda", "CodecZlib", "ColorBrewer", "ColorSchemes", "Colors", "Combinatorics"])' && \
     julia -e 'import Pkg; Pkg.add.(["DataFrames", "DataStructures", "Distributions", "Documenter"])' && \
     julia -e 'import Pkg; Pkg.add.(["Feather", "FileIO", "Flux", "FFTW"])' && \
     julia -e 'import Pkg; Pkg.add.(["Genie", "GLPK", "Glob", "GR", "GZip"])' && \

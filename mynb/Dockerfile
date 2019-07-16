@@ -31,7 +31,6 @@ RUN conda install --quiet --yes tqdm tk lzo urllib3 && \
 
 ENV PYTHON="/opt/conda/bin/python"
 ENV CONDA_JL_HOME="/opt/conda/"
-
 RUN julia -e 'import Pkg; Pkg.update()' && \
     julia -e 'import Pkg; Pkg.add.(["ArgParse", "Arrow", "ApproxFun", "Blink", "BSON", "CSV", "CSVFiles"])' && \
     julia -e 'import Pkg; Pkg.add.(["Conda", "CodecZlib", "ColorBrewer", "ColorSchemes", "Colors", "Combinatorics"])' && \
@@ -43,7 +42,7 @@ RUN julia -e 'import Pkg; Pkg.update()' && \
     julia -e 'import Pkg; Pkg.add.(["JuMP", "JuliaDB", "JSON"])' && \
     julia -e 'import Pkg; Pkg.add.(["MLDataUtils", "MLJ", "Mustache"])' && \
     julia -e 'import Pkg; Pkg.add.(["NodeJS"])' && \
-    julia -e 'import Pkg; Pkg.add.(["ORCA", "OSQP", "OnlineStats"])' && \
+    julia -e 'import Pkg; Pkg.add.(["OSQP", "OnlineStats"])' && \
     julia -e 'import Pkg; Pkg.add.(["Parquet", "ParquetFiles", "Plots", "PrettyTables", "ProgressMeter", "PlotlyJS"])' && \
     julia -e 'import Pkg; Pkg.add.(["Query", "QuantEcon"])' && \
     julia -e 'import Pkg; Pkg.add.(["StatsBase"])' && \
@@ -57,7 +56,7 @@ RUN julia -e 'import Pkg; Pkg.update()' && \
     julia -e 'import Pkg; Pkg.API.precompile()' && \
     #julia -e 'import IJulia; import NodeJS; import WebIO; using Pkg; Pkg.build.(["WebIO", "IJulia", "NodeJS"])' && \
     jupyter labextension install @jupyterlab/plotly-extension && \
-    #jupyter lab build && \
+    jupyter lab build && \
     jupyter-labextension unlink --debug /opt/julia/packages/WebIO/9qsL8/packages/webio && \
     chmod -R go+rx $CONDA_DIR/share/jupyter && \
     rm -rf $HOME/.local && \

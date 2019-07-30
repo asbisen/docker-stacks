@@ -56,7 +56,7 @@ RUN julia -e 'import Pkg; Pkg.add("Conda"); Pkg.build("Conda")' && \
     julia -e 'import Pkg; Pkg.add.(["StatsBase", "ScikitLearn", "StatsKit"])'                      && \
     julia -e 'import Pkg; Pkg.add.(["TableReader", "TimeSeries", "TimeseriesPrediction"])'         && \
     julia -e 'import Pkg; Pkg.add.(["UnicodePlots"])'                                              && \
-    julia -e 'import Pkg; Pkg.add.(["VegaDatasets"])'                                              && \
+    julia -e 'import Pkg; Pkg.add.(["VegaDatasets", "VegaLite"])'                                  && \
     julia -e 'import Pkg; Pkg.add.(["Weave", "WebIO"])'                                            && \
     julia -e 'import Pkg; Pkg.add.(["XGBoost"])'                                                   && \
     julia -e 'import Pkg; Pkg.add.(["YAML"])'                                                      && \

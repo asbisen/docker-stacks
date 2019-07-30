@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 SRV="srv.apnet.local:5000"
 NAME="mynb"
 TAG="latest"

@@ -31,10 +31,19 @@ RUN conda install --quiet --yes opencv tqdm tk lzo urllib3 && \
 
 ENV PYTHON="/opt/conda/bin/python"
 ENV CONDA_JL_HOME="/opt/conda/"
+
+#
 # Start by building Conda ensures it uses the 
 # root environment of Anaconda which is pre-installed
-RUN julia -e 'import Pkg; Pkg.add("Conda"); Pkg.build("Conda")' && \
-    julia -e 'import Pkg; Pkg.update()' && \
+RUN julia -e 'import Pkg; Pkg.update()' && \
+    julia -e "using Pkg; pkg\"add IJulia InstantiateFromURL\"; pkg\"precompile\""                  && \
+    # move kernelspec out of home                                                                  && \
+    mv $HOME/.local/share/jupyter/kernels/julia* $CONDA_DIR/share/jupyter/kernels/                 && \
+    chmod -R go+rx $CONDA_DIR/share/jupyter                                                        && \
+    rm -rf $HOME/.local                                                                            && \
+    fix-permissions $JULIA_PKGDIR $CONDA_DIR/share/jupyter                                         && \
+    julia -e 'import Pkg; Pkg.add("Conda"); Pkg.build("Conda")'                                    && \
+    julia -e 'import Pkg; Pkg.update()'                                                            && \
     julia -e 'import Pkg; Pkg.add.(["ArgParse", "Arrow", "ApproxFun", "BSON", "CSV", "CSVFiles"])' && \
     julia -e 'import Pkg; Pkg.add.(["CodecZlib", "ColorBrewer", "ColorSchemes", "Colors"])'        && \
     julia -e 'import Pkg; Pkg.add.(["Combinatorics", "Clustering"])'                               && \

@@ -1,6 +1,6 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
-ARG BASE_CONTAINER=jupyter/minimal-notebook
+ARG BASE_CONTAINER=srv.apnet.local:5000/minimal-notebook
 FROM $BASE_CONTAINER
 
 LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
@@ -22,7 +22,7 @@ RUN conda install --quiet --yes \
     'ipywidgets=7.4*' \
     'pandas=0.24*' \
     'numexpr=2.6*' \
-    'matplotlib=3.0*' \
+    'matplotlib=3.*' \
     'scipy=1.2*' \
     'seaborn=0.9*' \
     'scikit-learn=0.20*' \

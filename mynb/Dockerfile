@@ -62,6 +62,7 @@ RUN julia -e 'import Pkg; Pkg.update()' && \
     julia -e 'import Pkg; Pkg.add.(["Parquet", "ParquetFiles", "Plots"])'                          && \
     julia -e 'import Pkg; Pkg.add.(["PrettyTables", "ProgressMeter", "PlotlyJS"])'                 && \
     julia -e 'import Pkg; Pkg.add.(["Query", "QuantEcon"])'                                        && \
+    julia -e 'import Pkg; Pkg.add.(["Revise"])'                                                    && \
     julia -e 'import Pkg; Pkg.add.(["StatsBase", "ScikitLearn", "StatsKit"])'                      && \
     julia -e 'import Pkg; Pkg.add.(["TableReader", "TimeSeries", "TimeseriesPrediction"])'         && \
     julia -e 'import Pkg; Pkg.add.(["UnicodePlots"])'                                              && \

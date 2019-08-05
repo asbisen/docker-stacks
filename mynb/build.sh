@@ -3,7 +3,7 @@
 set -e
 
 SRV="srv.apnet.local:5000"
-NAME="mynb"
+NAME="mynb-j13a"
 TAG="latest"
 DT=`date +%y-%m-%d`
 

@@ -1,6 +1,6 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
-ARG BASE_CONTAINER=srv.apnet.local:5000/datascience-notebook
+ARG BASE_CONTAINER=srv.apnet.local:5000/datascience-notebook-j13a
 FROM $BASE_CONTAINER
 
 LABEL maintainer="Anand Bisen <asbisen@icloud.com>"

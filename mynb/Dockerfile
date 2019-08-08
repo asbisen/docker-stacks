@@ -56,7 +56,7 @@ RUN julia -e 'import Pkg; Pkg.update()' && \
     julia -e 'import Pkg; Pkg.add.(["HDF5", "HTTP"])'                                              && \
     julia -e 'import Pkg; Pkg.add.(["Images", "IJulia", "Impute", "Ipopt", "IterTools"])'          && \
     julia -e 'import Pkg; Pkg.add.(["JuMP", "JuliaDB", "JSON"])'                                   && \
-    julia -e 'import Pkg; Pkg.add.(["LIBSVM", "Luxor"])'                                           && \
+    julia -e 'import Pkg; Pkg.add.(["LIBSVM"])'                                                    && \
     julia -e 'import Pkg; Pkg.add.(["MLJModels", "MLDataUtils", "MLJ", "Mustache"])'               && \
     julia -e 'import Pkg; Pkg.add.(["MultivariateStats"])'                                         && \
     julia -e 'import Pkg; Pkg.add.(["NodeJS", "NaiveBayes"])'                                      && \

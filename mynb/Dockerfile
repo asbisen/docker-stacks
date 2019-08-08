@@ -11,7 +11,9 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
                        zlib1g-dev              \
                        vim-tiny                \
-                       libsz2 libstdc++6       \ 
+                       gettext-base            \
+                       pkgconf                 \
+                       libsz2 libstdc++6       \
                        libquadmath0            \
                        libgconf-2-4            \
                        libxtst6                \
@@ -54,7 +56,7 @@ RUN julia -e 'import Pkg; Pkg.update()' && \
     julia -e 'import Pkg; Pkg.add.(["HDF5", "HTTP"])'                                              && \
     julia -e 'import Pkg; Pkg.add.(["Images", "IJulia", "Impute", "Ipopt", "IterTools"])'          && \
     julia -e 'import Pkg; Pkg.add.(["JuMP", "JuliaDB", "JSON"])'                                   && \
-    julia -e 'import Pkg; Pkg.add.(["LIBSVM"])'                                                    && \
+    julia -e 'import Pkg; Pkg.add.(["LIBSVM", "Luxor"])'                                           && \
     julia -e 'import Pkg; Pkg.add.(["MLJModels", "MLDataUtils", "MLJ", "Mustache"])'               && \
     julia -e 'import Pkg; Pkg.add.(["MultivariateStats"])'                                         && \
     julia -e 'import Pkg; Pkg.add.(["NodeJS", "NaiveBayes"])'                                      && \
